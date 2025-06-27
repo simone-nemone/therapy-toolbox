@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapy Framework Decision Flowchart</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .start-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 500;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            max-width: 400px;
+        }
+        
+        .question-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #2d3748;
+            max-width: 500px;
+            box-shadow: 0 8px 25px rgba(252, 182, 159, 0.3);
+            border-left: 5px solid #ed8936;
+        }
+        
+        .answer-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .answer-box {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .answer-box:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .framework-box {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.3);
+            border-left: 5px solid #38b2ac;
+        }
+        
+        .framework-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .framework-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .quick-practice {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #38b2ac;
+            font-style: italic;
+            color: #2d3748;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .reset-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .wisdom-note {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-left: 4px solid #f56565;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-style: italic;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Therapy Framework Decision Guide</h1>
+        <p class="subtitle">Find the right therapeutic approach for this moment</p>
+        
+        <div class="flowchart">
+            <div class="start-box">
+                Take a deep breath. Notice what's happening in your body and mind right now.
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div id="step1" class="question-box">
+                What is your most prominent feeling or sensation right now?
+            </div>
+            
+            <div class="answer-container">
+                <div class="answer-box" onclick="showResult('overwhelmed')">
+                    Overwhelmed, scattered, too much at once
+                </div>
+                <div class="answer-box" onclick="showResult('angry')">
+                    Angry, frustrated, reactive
+                </div>
+                <div class="answer-box" onclick="showResult('stuck')">
+                    Stuck, heavy, unmotivated
+                </div>
+                <div class="answer-box" onclick="showResult('selfcritical')">
+                    Self-critical, not good enough
+                </div>
+                <div class="answer-box" onclick="showResult('disconnected')">
+                    Disconnected, going through motions
+                </div>
+                <div class="answer-box" onclick="showResult('intense')">
+                    Emotions feel too big, intense
+                </div>
+                <div class="answer-box" onclick="showResult('sad')">
+                    Sad, tearful, grieving
+                </div>
+                <div class="answer-box" onclick="showResult('anxious')">
+                    Anxious, worried, racing mind
+                </div>
+            </div>
+            
+            <!-- Results for each path -->
+            <div id="result-overwhelmed" class="framework-box hidden">
+                <div class="framework-title">DBT Distress Tolerance + Mindfulness</div>
+                <div class="framework-description">
+                    When life feels like too much, your nervous system is in survival mode. You need to regulate first, then problem-solve. This overwhelm is a signal that you're carrying more than your current capacity can handle.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Use TIPP skills - Temperature (cold water on face/wrists), Intense exercise (30 jumping jacks), Paced breathing (4-7-8 breath), or Progressive muscle relaxation. Then ask: "What's the most important thing I need to do right now?" Focus on just that one thing.
+                </div>
+            </div>
+            
+            <div id="result-angry" class="framework-box hidden">
+                <div class="framework-title">DBT Emotion Regulation + Cognitive Restructuring</div>
+                <div class="framework-description">
+                    Anger often signals that a boundary has been crossed or a need isn't being met. While the feeling is valid, how you express it matters. Your anger might be protecting you from feeling hurt, disappointment, or powerlessness underneath.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Use STOP - Stop, Take a breath, Observe what you're feeling, Proceed mindfully. Ask yourself: "What am I really angry about? What do I need right now?" Then choose one action that honors both your needs and your values. Sometimes we need to feel the anger fully before we can act wisely.
+                </div>
+            </div>
+            
+            <div id="result-stuck" class="framework-box hidden">
+                <div class="framework-title">Behavioral Activation + Self-Compassion</div>
+                <div class="framework-description">
+                    Feeling stuck often happens when we're depleted or when our actions aren't aligned with what matters to us. Depression and overwhelm can make everything feel pointless or too difficult. Your brain might be protecting you by conserving energy.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Start incredibly small - what's one tiny action you could take that would move you even slightly forward? It might be making the bed, sending one text, or walking to the mailbox. Action can create momentum when motivation isn't available. Be kind to yourself about feeling stuck - it's human.
+                </div>
+            </div>
+            
+            <div id="result-selfcritical" class="framework-box hidden">
+                <div class="framework-title">Self-Compassion + Cognitive Behavioral Therapy</div>
+                <div class="framework-description">
+                    That inner critic often learned to be harsh as a way to motivate you or keep you safe from rejection. But research shows self-compassion is actually more motivating than self-criticism. You're likely holding yourself to standards you'd never expect from a friend.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Place your hand on your heart and ask: "What would I say to a good friend going through exactly what I'm experiencing?" Then offer yourself those same words. Try this phrase: "This is a moment of struggle. Struggle is part of being human. May I be kind to myself in this moment."
+                </div>
+            </div>
+            
+            <div id="result-disconnected" class="framework-box hidden">
+                <div class="framework-title">Acceptance and Commitment Therapy (ACT)</div>
+                <div class="framework-description">
+                    When life feels automatic or meaningless, you've likely gotten caught up in just surviving rather than living according to your values. This disconnection often happens during stressful periods when we focus only on getting through rather than living fully.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Ask yourself: "What kind of person do I want to be in this situation?" Not perfect, but values-driven. Choose one small action that reflects who you want to be - as a friend, parent, partner, or human being. Sometimes we act our way back into feeling connected rather than waiting to feel motivated first.
+                </div>
+            </div>
+            
+            <div id="result-intense" class="framework-box hidden">
+                <div class="framework-title">Mindfulness + Distress Tolerance</div>
+                <div class="framework-description">
+                    Intense emotions can feel overwhelming, but they're temporary visitors carrying important information. The intensity often comes from fighting the feeling rather than allowing it to move through you. Emotions are like weather - they change when we stop resisting them.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Try RAIN - Recognize what you're feeling, Allow it to be present without trying to change it, Investigate with kindness ("Where do I feel this in my body?"), and remember this feeling is Not permanent. Breathe with the emotion rather than against it. What is this feeling trying to tell you?
+                </div>
+            </div>
+            
+            <div id="result-sad" class="framework-box hidden">
+                <div class="framework-title">Grief Work + Mindful Self-Compassion</div>
+                <div class="framework-description">
+                    Sadness and tears often carry important messages about loss, disappointment, or unmet needs. In our culture, we're often taught to "get over" sadness quickly, but it's actually a necessary part of processing life's inevitable losses and changes.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Honor your tears as messengers. Place both hands on your heart and breathe deeply. Ask gently: "What am I grieving? What do I need right now?" It might be comfort, understanding, or simply permission to feel sad. Let the sadness flow - it's clearing space for healing and new growth.
+                </div>
+            </div>
+            
+            <div id="result-anxious" class="framework-box hidden">
+                <div class="framework-title">Anxiety Management + Grounding Techniques</div>
+                <div class="framework-description">
+                    Anxiety often stems from your mind projecting into an uncertain future or ruminating about the past. Your body is responding to perceived threats, even when you're physically safe. The racing thoughts are your brain trying to solve problems that may not even happen.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Ground yourself with 5-4-3-2-1: Notice 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste. Then take slow, deep breaths - inhale for 4, hold for 4, exhale for 6. Remind yourself: "I am safe in this moment. I can handle whatever comes, one moment at a time."
+                </div>
+            </div>
+            
+            <button class="reset-button" onclick="resetFlowchart()">Start Over</button>
+        </div>
+        
+        <div class="wisdom-note">
+            <strong>Remember:</strong> Healing isn't linear, and you don't have to be perfect. Growth happens in spirals - sometimes we revisit the same challenges, but each time we bring more wisdom, tools, and self-compassion. Be patient with yourself as you learn and practice these skills. Progress, not perfection, is the goal.
+        </div>
+    </div>
+
+    <script>
+        function showResult(resultType) {
+            // Hide all results first
+            const allResults = document.querySelectorAll('[id^="result-"]');
+            allResults.forEach(result => result.classList.add('hidden'));
+            
+            // Show the selected result
+            const selectedResult = document.getElementById('result-' + resultType);
+            selectedResult.classList.remove('hidden');
+            
+            // Scroll to the result
+            selectedResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function resetFlowchart() {
+            const allResults = document.querySelectorAll('[id^="result-"]');
+            allResults.forEach(result => result.classList.add('hidden'));
+            
+            // Scroll back to top
+            document.getElementById('step1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
